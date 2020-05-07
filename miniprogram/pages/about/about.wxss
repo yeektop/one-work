@@ -1,0 +1,25 @@
+.page {
+  height: 100vh;
+}
+
+.page__bd {
+  margin: 0;
+}
+
+.weui-article {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+}
+
+.weui-article__h1 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.weui-article__p{
+  color: rgba(0, 0, 0, 0.3);
+}
