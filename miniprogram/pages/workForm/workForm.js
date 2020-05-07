@@ -18,8 +18,6 @@ Page({
     title: '',
     course: '',
     date: '',
-    remar: '',
-    classes: '',
     end: '',
     classIndex: -1,
     look: true
@@ -81,8 +79,6 @@ Page({
    */
   async submit(e) {
     try {
-
-
       this.setData({ adding: true })
       const {
         title = '',
@@ -107,25 +103,20 @@ Page({
       }).catch(e => {
         throw "含有敏感信息"
       })
-      await works
-        .add({
-          data: {
-            title,
-            course,
-            end,
-            content,
-            createTime: (+new Date()),
-            belongClasses
-          }
-        })
-        .then(res => {
-          this.setData({ adding: false })
-          if (look) {
-            wx.reLaunch({
-              url: '/pages/info/info?id=' + res._id,
-            })
-          }
-        })
+      const { createTime, _id } = this.data
+      const form = {
+        title,
+        course,
+        end,
+        content,
+        createTime: createTime ? createTime : (+new Date()),
+        belongClasses: belongClasses || {}
+      }
+      if (_id) {
+        this.update(form, look, _id)
+      } else {
+        this.add(form, look)
+      }
     } catch (e) {
       console.error(e);
       this.setData({
@@ -135,6 +126,41 @@ Page({
     }
   },
 
+  /**
+   * 添加work操作
+   */
+  async add(form, look) {
+    console.log(form)
+    await works
+      .add({ data: form })
+      .then(res => {
+        this.setData({ adding: false })
+        if (look) {
+          wx.reLaunch({
+            url: '/pages/info/info?id=' + res._id,
+          })
+        }
+      })
+  },
+
+  /**
+   * 更新work操作
+   */
+  async update(form, look, id) {
+    console.log(form)
+    await works.doc(id)
+      .update({ data: form })
+      .then(res => {
+        console.log(res)
+        this.setData({ adding: false })
+        if (look) {
+          wx.reLaunch({
+            url: '/pages/info/info?id=' + id,
+          })
+        }
+      })
+  },
+
   clearError() {
     this.setData({ error: '', })
   },
@@ -142,11 +168,31 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onLoad(options) {
     const userInfo = wx.getStorageSync('userInfo')
-    this.setData({
-      userInfo, loading: false
-    })
+    // 更新work会携带id
+    if (options.id) {
+      const work = (await works.doc(options.id).get()).data
+      const {
+        _id, createTime,
+        title, course,
+        end, content
+      } = work
+      this.setData({
+        _id, createTime,
+        title, course,
+        end, content,
+        userInfo,
+        loading: false,
+        date: formatDay(end),
+        head: "更新作业"
+      })
+    } else {
+      this.setData({
+        userInfo, loading: false, head: "更新作业"
+      })
+    }
+
 
   },
 

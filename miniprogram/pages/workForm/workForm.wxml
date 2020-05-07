@@ -9,7 +9,7 @@
   <view class="page">
     <form class="weui-form">
       <view class="weui-form__text-area">
-        <h2 class="weui-form__title">添加作业</h2>
+        <h2 class="weui-form__title">{{ head }}</h2>
         <view wx:if="{{ userInfo.role !== 'admin' }}" class="weui-form__desc"
           >当前发布仅自己可查看，想发布到班级，请联系开发者认证。</view
         >
