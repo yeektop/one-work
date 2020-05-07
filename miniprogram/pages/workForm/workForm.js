@@ -17,7 +17,10 @@ Page({
     result: [],
     title: '',
     course: '',
-    date: '',
+    date(timestamp) {
+      console.log("2");
+      return formatDay(timestamp)
+    },
     end: '',
     classIndex: -1,
     look: true
@@ -77,7 +80,7 @@ Page({
   /**
    * 提交表单
    */
-  async submit(e) {
+  async submit() {
     try {
       this.setData({ adding: true })
       const {
@@ -91,6 +94,8 @@ Page({
       if (title.length < 3) {
         throw "标题太短了"
       }
+
+      // 内容审查
       await wx.cloud.callFunction({
         name: 'checkText',
         data: {
@@ -100,7 +105,7 @@ Page({
             content,
           })
         }
-      }).catch(e => {
+      }).catch(() => {
         throw "含有敏感信息"
       })
       const { createTime, _id } = this.data
@@ -146,19 +151,28 @@ Page({
   /**
    * 更新work操作
    */
-  async update(form, look, id) {
-    console.log(form)
-    await works.doc(id)
-      .update({ data: form })
-      .then(res => {
-        console.log(res)
-        this.setData({ adding: false })
-        if (look) {
-          wx.reLaunch({
-            url: '/pages/info/info?id=' + id,
-          })
-        }
+  async update(form, id) {
+    const { updated } = (await works.doc(id)
+      .update({ data: form }))
+      .stats
+    if (updated !== 1) {
+      throw "更新失败"
+    } else {
+      return
+    }
+
+  },
+
+  /**
+   * 更新/添加完成
+   */
+  finis() {
+    this.setData({ adding: false })
+    if (look) {
+      wx.reLaunch({
+        url: '/pages/info/info?id=' + id,
       })
+    }
   },
 
   clearError() {
@@ -170,30 +184,18 @@ Page({
    */
   async onLoad(options) {
     const userInfo = wx.getStorageSync('userInfo')
+    let work = {}, head = "发布作业", date = ''
+    
     // 更新work会携带id
     if (options.id) {
-      const work = (await works.doc(options.id).get()).data
-      const {
-        _id, createTime,
-        title, course,
-        end, content
-      } = work
-      this.setData({
-        _id, createTime,
-        title, course,
-        end, content,
-        userInfo,
-        loading: false,
-        date: formatDay(end),
-        head: "更新作业"
-      })
-    } else {
-      this.setData({
-        userInfo, loading: false, head: "更新作业"
-      })
+      head = "发布作业"
+      work = (await works.doc(options.id).get()).data
+      date = formatDay(work.end)
     }
-
-
+    
+    this.setData({
+      ...work, date, userInfo, loading: false, head
+    })
   },
 
   /**

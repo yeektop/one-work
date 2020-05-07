@@ -35,7 +35,7 @@ Page({
     const { name } = event.detail
     switch (name) {
       case '修改':
-        this.update(this.data.work._id)
+        this.update()
         break;
       case '删除':
         this.delect()
@@ -80,7 +80,7 @@ Page({
 
   update(id) {
     wx.navigateTo({
-      url: '/pages/workForm/workForm?id=' + id,
+      url: '/pages/workForm/workForm?id=' + this.data.work._id,
     })
   },
 
