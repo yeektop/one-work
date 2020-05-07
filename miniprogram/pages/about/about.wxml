@@ -1,0 +1,24 @@
+<view class="page">
+  <!-- 头部 -->
+  <view class="page__bd">
+    <view class="weui-article">
+      <view class="weui-article__h1">一作业</view>
+      <view class="weui-article__p">1.0</view>
+    </view>
+  </view>
+
+  <!-- 主体 -->
+  <van-cell-group>
+    <van-cell title="访问 PC Web版"is-link custom-class="cell"></van-cell>
+    <van-cell title="在 GitHub" is-link custom-class="cell"></van-cell>
+    <van-cell title="联系我们" is-link custom-class="cell"></van-cell>
+  </van-cell-group>
+
+  <!-- 底部版权信息 -->
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__links">
+      <a href="" class="weui-footer__link">一作业首页</a>
+    </view>
+    <view class="weui-footer__text">Copyright &copy; 2020-2020 yeek.top</view>
+  </view>
+</view>
