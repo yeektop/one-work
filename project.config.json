@@ -1,0 +1,111 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [
+				"miniprogram_npm/*"
+			],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"appid": "wx03bcb7ad8c3a3ac9",
+	"projectname": "one-work",
+	"libVersion": "2.11.0",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/info/info",
+					"pathName": "pages/info/info",
+					"query": "id=37e26adb5eb2e2cb002f4d022e79d448",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/add/add",
+					"pathName": "pages/add/add",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/class/join",
+					"pathName": "pages/class/join",
+					"query": "classId=6af880a55eb2bc8f002edd4409bd0c1b",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/class/class",
+					"pathName": "pages/class/class",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/msg/msg",
+					"pathName": "pages/msg/msg",
+					"query": "type=info&msg=您的操作完成了&tips=点击确定返回上一页&url=/pages/class/class",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/class/confirm_join",
+					"pathName": "pages/class/confirm_join",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

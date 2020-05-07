@@ -1,0 +1,23 @@
+<van-transition show="{{ !loading }}" custom-class="h-100">
+  <view class="article">
+    <view class="title">{{ work.title }}</view>
+    <view class="info">
+      <view wx:if="{{ work.course }}" class="weui-media-box__info__meta">{{ work.course }}</view>
+      <view class="weui-media-box__info__meta">{{ work.date }}</view>
+    </view>
+    <view class="content">{{ work.content }}</view>
+    <view class="bottom">
+      <a class="weui-btn weui-btn_primary" bindtap="onConfirm">完成</a>
+      <a class="weui-btn weui-btn_default" bindtap="show">更多</a>
+    </view>
+  </view>
+</van-transition>
+
+<van-action-sheet
+  show="{{ show }}"
+  actions="{{ actions }}"
+  bind:close="show"
+  bind:cancel="show"
+  bind:select="onSelect"
+  cancel-text="取消"
+></van-action-sheet>

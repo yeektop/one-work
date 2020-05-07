@@ -1,0 +1,77 @@
+.no-button {
+  position: unset;
+  display: unset;
+  margin-left: unset;
+  margin-right: unset;
+  padding-left: unset;
+  padding-right: unset;
+  box-sizing: unset;
+  font-size: unset;
+  text-align: unset;
+  text-decoration: unset;
+  line-height: unset;
+  border-radius: unset;
+  overflow: unset;
+  color: unset;
+  background-color: unset;
+}
+
+button::after {
+  border: none;
+}
+
+@import './style/weui.wxss';
+@import './style/slideview.wxss';
+
+
+.weui-dialog__bd {
+  overflow-y: unset;
+}
+
+.weui-msg__extra-area {
+  position: static;
+}
+
+.fadeIn {
+  -webkit-animation: c .3s forwards;
+  animation: c .3s forwards
+}
+
+page {
+  height: 100%
+}
+
+.page {
+  height: 100%;
+  min-height: 100%;
+  color: var(--weui-FG-0);
+  font-size: 16px;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif
+}
+
+.warn {
+  color: var(--weui-RED)
+}
+
+.loading {
+  position: fixed !important;
+  margin: auto !important;
+  right: 0px !important;
+  left: 0px !important;
+  top: 0px !important;
+  bottom: 0px !important;
+}
+
+.cell {
+  padding: 16px 32px !important;
+  font-size: unset !important;
+}
+
+.van-button {
+  border-radius: 4px !important;
+}
+
+
+.van-button--small {
+  border-radius: 3px !important;
+}

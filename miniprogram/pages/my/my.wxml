@@ -1,0 +1,41 @@
+<van-toast id="van-toast"></van-toast>
+<view class="info">
+  <view class="user" wx:if="{{ userInfo }}">
+    <image class="avatar" src="{{ userInfo.avatarUrl }}"></image>
+    <view
+      ><text class="nickname">{{ userInfo.nickName }}</text></view
+    >
+  </view>
+  <van-button
+    wx:else
+    open-type="getUserInfo"
+    bind:getuserinfo="signInOrUp"
+    lang="zh_CN"
+    round
+    block
+    type="info"
+    >登 录</van-button
+  >
+</view>
+<van-cell-group style="margin-top:24rpx;">
+  <van-cell title="添加作业" url="/pages/add/add" is-link custom-class="cell"></van-cell>
+  <van-cell
+    wx:if="{{ userInfo }}"
+    title="班级管理"
+    url="/pages/class/class"
+    is-link
+    custom-class="cell"
+  ></van-cell>
+  <van-cell title="关于" is-link custom-class="cell"></van-cell>
+</van-cell-group>
+
+<van-dialog
+  use-slot
+  title="标题"
+  show="{{ show }}"
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="onClose"
+  bind:getuserinfo="getUserInfo"
+>
+</van-dialog>

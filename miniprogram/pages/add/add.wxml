@@ -1,0 +1,128 @@
+<mp-toptips
+  msg="{{ error }}"
+  type="error"
+  show="{{ error }}"
+  delay="{{ 5000 }}"
+  bindhide="clearError"
+></mp-toptips>
+<van-transition show="{{ !loading }}" custom-class="page">
+  <view class="page">
+    <form class="weui-form">
+      <view class="weui-form__text-area">
+        <h2 class="weui-form__title">添加作业</h2>
+        <view wx:if="{{ userInfo.role !== 'admin' }}" class="weui-form__desc"
+          >当前发布仅自己可查看，想发布到班级，请联系开发者认证。</view
+        >
+      </view>
+      <view class="weui-form__control-area">
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cells__title">基本信息</view>
+          <view class="weui-cells weui-cells_form">
+            <van-cell-group class="formbox">
+              <van-field
+                name="title"
+                label="标题"
+                placeholder="请填写标题"
+                model:value="{{ title }}"
+                clearable
+              ></van-field>
+              <van-field
+                name="course"
+                label="课程"
+                placeholder="请填写课程"
+                model:value="{{ course }}"
+                clearable
+              ></van-field>
+              <van-field
+                name="date"
+                placeholder="请选择结束日期"
+                label="结束日期"
+                model:value="{{ date }}"
+                bind:tap="calendarShow"
+                clickable
+                readonly
+                use-button-slot
+              >
+                <van-button
+                  wx:if="{{ date }}"
+                  slot="button"
+                  size="small"
+                  type="primary"
+                  custom-class="clearbtn"
+                  catch:tap="clearDate"
+                >
+                  ×
+                </van-button>
+              </van-field>
+              <van-calendar
+                show="{{ calendarShow }}"
+                bind:close="calendarShow"
+                bind:confirm="calendarConfirm"
+              ></van-calendar>
+              <van-field
+                wx:if="{{ !calendarShow }}"
+                type="textarea"
+                name="content"
+                label="内容"
+                placeholder="请填写内容"
+                model:value="{{ content }}"
+                border="{{ false }}"
+                clearable
+                autosize
+              ></van-field>
+              <!-- 避免 placeholder 在最顶层 -->
+              <van-field
+                wx:else
+                name="content"
+                label="内容"
+                placeholder="请填写内容"
+                model:value="{{ content }}"
+                border="{{ false }}"
+                clearable
+              ></van-field>
+            </van-cell-group>
+          </view>
+          <view class="weui-form__control-area">
+            <view class="weui-cells__title">发布班级</view>
+            <view class="weui-cells weui-cells_form">
+              <van-radio-group value="{{ classIndex }}">
+                <van-cell-group class="formbox">
+                  <van-cell
+                    wx:for="{{ userInfo.classes }}"
+                    wx:key="_id"
+                    title="{{ item.classname }}"
+                    clickable
+                    data-name="{{ index }}"
+                    bind:click="{{ userInfo.role === 'admin' ? 'classClick' : '' }}"
+                  >
+                    <van-radio
+                      slot="right-icon"
+                      checked-color="#07c160"
+                      name="{{ index }}"
+                    ></van-radio>
+                  </van-cell>
+                </van-cell-group>
+              </van-radio-group>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-form__tips-area">
+        <label class="weui-agree" bind:tap="look">
+          <checkbox class="weui-agree__checkbox-check" checked="{{ look }}"></checkbox>
+          <span class="weui-agree__checkbox"></span>
+          <span class="weui-agree__text">提交后立即查看</span>
+        </label>
+      </view>
+      <view class="weui-form__opr-area">
+        <view
+          bind:tap="submit"
+          class="weui-btn weui-btn_primary {{ adding ? 'weui-btn_loading' : '' }}"
+        >
+          <i wx:if="{{ adding }}" class="weui-loading"></i>
+          提交
+        </view>
+      </view>
+    </form>
+  </view>
+</van-transition>

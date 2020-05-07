@@ -1,0 +1,66 @@
+page {
+  height: 100%;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.article {
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.info {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1em;
+  overflow: hidden;
+}
+
+.content {
+  margin-top: 8px;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.content:empty::after {
+  content: "暂无介绍";
+}
+
+.bottom {
+  margin-top: auto;
+  margin-bottom: 96px;
+}
+
+.weui-media-box__info__meta {
+  padding-left: 1em;
+  border-left: 1px solid var(--weui-FG-2);
+  line-height: 1em;
+  overflow: hidden;
+}
+
+.weui-media-box__info__meta:empty,
+.weui-media-box__info__meta:first-child {
+  padding-left: unset;
+  border-left: unset;
+  line-height: unset;
+  overflow: unset;
+}
+
+.weui-panel__bd:empty::after {
+  content: '暂无数据';
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.3);
+}

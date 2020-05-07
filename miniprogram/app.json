@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/info/info",
+    "pages/my/my",
+    "pages/add/add",
+    "pages/class/class",
+    "pages/class/join",
+    "pages/class/quit",
+    "pages/class/create",
+    "pages/msg/msg",
+    "pages/about/about",
+    "pages/admin/admin"
+  ],
+  "tabBar": {
+    "borderStyle": "white",
+    "backgroundColor": "#F6F6F6",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "清单",
+        "iconPath": "images/success.png",
+        "selectedIconPath": "images/success-fill.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/account.png",
+        "selectedIconPath": "images/account-fill.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-cell": "@vant/weapp/cell",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips"
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "一作业",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

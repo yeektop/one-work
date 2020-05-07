@@ -1,0 +1,23 @@
+.weui-media-box__info__meta {
+  padding-left: 1em;
+  border-left: 1px solid var(--weui-FG-2);
+  line-height: 1em;
+  overflow: hidden;
+}
+
+.weui-media-box__info__meta:empty,
+.weui-media-box__info__meta:first-child {
+  padding-left: unset;
+  border-left: unset;
+  line-height: unset;
+  overflow: unset;
+}
+
+.weui-panel__bd:empty::after {
+  content: '暂无数据';
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.3);
+}

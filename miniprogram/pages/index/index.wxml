@@ -1,0 +1,26 @@
+<!-- 加载动画 -->
+<van-loading wx:if="{{ loading }}" size="24px" color="#1296db" vertical custom-class="loading"
+  >加载中</van-loading
+>
+<van-transition show="{{ !loading }}">
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view
+        wx:for="{{ workList }}"
+        wx:key="_id"
+        data-id="{{ item._id }}"
+        bind:tap="toInfo"
+        class="weui-media-box weui-media-box_text"
+        hover-class="weui-cell_active"
+      >
+        <h4 class="weui-media-box__title">{{ item.title }}</h4>
+        <view class="weui-media-box__desc">{{ item.content }}</view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta class">{{ item.belongClasses.classname }}</view>
+          <view class="weui-media-box__info__meta course">{{ item.course }}</view>
+          <view class="weui-media-box__info__meta date">{{ item.date }}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-transition>

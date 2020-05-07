@@ -1,0 +1,38 @@
+<van-loading wx:if="{{ loading }}" size="24px" color="#1296db" vertical custom-class="loading"
+  >查找班级中</van-loading
+>
+<van-transition show="{{ !loading }}" custom-class="page">
+  <view class="page">
+    <mp-toptips
+      msg="{{ error }}"
+      type="error"
+      show="{{ error }}"
+      delay="{{ 5000 }}"
+      bindhide="clearError"
+    ></mp-toptips>
+    <view class="weui-msg">
+      <view class="weui-msg__icon-area"><i class="weui-icon-info weui-icon_msg"></i></view>
+      <view class="weui-msg__text-area">
+        <h2 class="weui-msg__title">你确定要加入班级“{{ classInfo.classname }}”吗？</h2>
+      </view>
+      <view class="weui-msg__opr-area">
+        <view class="weui-btn-area">
+          <button
+            class="weui-btn weui-btn_primary {{ joining ? 'weui-btn_loading' : '' }}"
+            open-type="getUserInfo"
+            bindgetuserinfo="confirm"
+            lang="zh_CN"
+          >
+            <i wx:if="{{ joining }}" class="weui-loading"></i>
+            确定
+          </button>
+          <view
+            class="weui-btn weui-btn_default {{ joining ? 'weui-btn_disabled' : '' }}"
+            bind:tap="back"
+            >取消</view
+          >
+        </view>
+      </view>
+    </view>
+  </view>
+</van-transition>

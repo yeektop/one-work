@@ -1,0 +1,22 @@
+.formbox {
+  display: block;
+  padding: 0 16px;
+}
+
+.value-class {
+  flex: none !important;
+}
+
+.weui-cells:after {
+  border-bottom: unset;
+}
+
+.clearbtn {
+  width: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+}
+
+.weui-cells:before {
+  border-top: unset;
+}

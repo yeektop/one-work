@@ -1,0 +1,95 @@
+<van-loading wx:if="{{ loading }}" size="24px" color="#1296db" vertical custom-class="loading"
+  >加载中</van-loading
+>
+<van-transition show="{{ !loading }}" custom-class="page">
+  <view class="page">
+    <view class="weui-form">
+      <view class="weui-form__text-area">
+        <h2 class="weui-form__title">我的班级</h2>
+      </view>
+      <view class="weui-form__control-area">
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cells__title">加入的班级</view>
+          <van-cell-group>
+            <van-swipe-cell
+              wx:for="{{ userInfo.classes }}"
+              wx:key="classId"
+              right-width="{{ 170 }}"
+              bind:open="swipeOpen"
+              name="{{ index }}"
+            >
+              <van-cell
+                title="{{ item.classname }}"
+                border="{{ false }}"
+                custom-class="cell"
+              ></van-cell>
+              <view slot="right" class="right">
+                <van-button
+                  open-type="share"
+                  size="mini"
+                  type="primary"
+                  custom-class="button"
+                  >分享</van-button
+                >
+                <van-button
+                  bind:tap="quit"
+                  size="mini"
+                  type="warn"
+                  custom-class="button weui-btn_warn"
+                  >退出</van-button
+                >
+              </view>
+            </van-swipe-cell>
+          </van-cell-group>
+        </view>
+      </view>
+      <view class="weui-form__opr-area">
+        <viwe
+          class="weui-btn weui-btn_primary"
+          bind:tap="dialogShow"
+          data-title="加入班级"
+          data-type="join"
+        >
+          加入班级
+        </viwe>
+        <viwe
+          wx:if="{{ userInfo.role === 'admin' }}"
+          class="weui-btn weui-btn_default"
+          id="create"
+          bind:tap="dialogShow"
+          data-title="创建班级"
+          data-type="create"
+        >
+          创建班级
+        </viwe>
+      </view>
+    </view>
+  </view>
+</van-transition>
+
+<view class="fadeIn" wx:if="{{ dialog.type }}">
+  <view class="weui-mask" bindtap="dialogClose"></view>
+  <view class="weui-dialog">
+    <view class="weui-dialog__hd"
+      ><strong class="weui-dialog__title">{{ dialog.title }}</strong></view
+    >
+    <view class="weui-dialog__bd">
+      <van-field
+        value="{{ input }}"
+        placeholder="请输入班级{{ dialog.type === 'join' ? 'id' : '名称' }}"
+        error-message="{{ inputError }}"
+        border="{{ false }}"
+        bind:change="onInput"
+        input-align="center"
+        focus="{{ true }}"
+        clearable
+      ></van-field>
+    </view>
+    <view class="weui-dialog__ft">
+      <view class="weui-dialog__btn weui-dialog__btn_default" bindtap="dialogClose">取消</view>
+      <view class="weui-dialog__btn weui-dialog__btn_primary" bind:tap="dialogConfirm">
+        确定
+      </view>
+    </view>
+  </view>
+</view>
