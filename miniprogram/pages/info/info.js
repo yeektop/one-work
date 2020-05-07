@@ -32,7 +32,50 @@ Page({
    * 分配 更多菜单 事件
    */
   onSelect(event) {
-    console.log(event);
+    const { name } = event.detail
+    switch (name) {
+      case '修改':
+        console.log("修改")
+        break;
+      case '删除':
+        this.delect()
+        break;
+      case '分享':
+        console.log("分享")
+        break;
+      case '订阅':
+        console.log("订阅")
+        break;
+      default:
+        break;
+    }
+  },
+
+  /**
+   * 处理删除
+   */
+  async delect() {
+    wx.showModal({
+      title: '删除',
+      confirmColor: '#ee0a24',
+      content: '确定删除此条作业？',
+    }).then(res => {
+      if (res.confirm) {
+        works.doc(this.data.work._id).remove().then(() => {
+          wx.showToast({
+            title: '删除成功',
+            success: () => {
+              setTimeout(() => {
+                wx.reLaunch({
+                  url: '/pages/index/index',
+                })
+              }, 1000)
+            }
+          })
+        }
+        )
+      }
+    })
   },
 
   /**
