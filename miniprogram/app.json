@@ -9,7 +9,6 @@
     "pages/class/quit",
     "pages/class/create",
     "pages/msg/msg",
-    "pages/about/about",
     "pages/admin/admin"
   ],
   "tabBar": {
