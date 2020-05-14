@@ -145,7 +145,7 @@ Page({
     return {
       path: `/pages/class/join?share=true&classId=${classId}`,
       title: `${userInfo.nickName}邀请您加入班级“${classname}”`,
-      imageUrl: "/images/classroom.jpg"
+      imageUrl: "/images/invite_class.png"
     }
   }
 })
