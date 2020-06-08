@@ -1,6 +1,6 @@
 {
   "name": "one-work",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "<p align=\"center\">\r     简约清新的 Work TODO \r </p>",
   "main": "index.js",
   "scripts": {
