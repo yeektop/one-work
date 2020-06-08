@@ -27,16 +27,9 @@
 1. 忘记某项作业
 2. 同学们都来问学委作业
 
-
-
-
-
-
 ## 体验二维码
 
 ![](/QRCode.png)
-
-
 
 ## 分支命名
 
@@ -45,8 +38,6 @@
 fate/add home page:  添加home页面
 
 fix/msg page navigate:  修复 msg 的导航问题
-
-
 
 ## 提交规范
 
@@ -74,14 +65,6 @@ fix/msg page navigate:  修复 msg 的导航问题
 6. 合并到 master 分支，打上 Tags
 7. 推送云端
 
-
-
-
-
-
 ## LICENSE
 
 [MIT](LICENSE)
-
-
-
