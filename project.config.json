@@ -24,8 +24,9 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": true,
+		"compileHotReLoad": false
 	},
 	"appid": "wx03bcb7ad8c3a3ac9",
 	"projectname": "one-work",

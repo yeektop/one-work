@@ -19,14 +19,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "清单",
-        "iconPath": "images/success.png",
-        "selectedIconPath": "images/success-fill.png"
+        "iconPath": "images/tabIcon/success.png",
+        "selectedIconPath": "images/tabIcon/success-fill.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "images/account.png",
-        "selectedIconPath": "images/account-fill.png"
+        "iconPath": "images/tabIcon/account.png",
+        "selectedIconPath": "images/tabIcon/account-fill.png"
       }
     ]
   },
