@@ -45,6 +45,7 @@
     "van-notify": "@vant/weapp/notify/index",
     "van-picker": "@vant/weapp/picker/index",
     "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-calendar": "@vant/weapp/calendar/index",
     "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
     "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips"
   },

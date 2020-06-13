@@ -1,23 +1,74 @@
+<mp-toptips
+  msg="{{ error }}"
+  type="error"
+  show="{{ error }}"
+  delay="{{ 5000 }}"
+  bindhide="clearError"
+></mp-toptips>
 <van-transition show="{{ !loading }}" custom-class="h-100">
-  <view class="article">
-    <view class="title">{{ work.title }}</view>
-    <view class="info">
-      <view wx:if="{{ work.course }}" class="weui-media-box__info__meta">{{ work.course }}</view>
-      <view class="weui-media-box__info__meta">{{ work.date }}</view>
+  <view class="page">
+    <view class="article">
+      <view class="title">{{ work.title }}</view>
+      <view class="info">
+        <view wx:if="{{ work.course }}" class="weui-media-box__info__meta">{{ work.course }}</view>
+        <view class="weui-media-box__info__meta">{{ work.date }}</view>
+      </view>
+      <view class="content">{{ work.content }}</view>
     </view>
-    <view class="content">{{ work.content }}</view>
     <view class="bottom">
+      <view wx:if="{{ sub.calDays }}" class="weui-form__tips-area">
+        <view class="weui-form__tips">在 {{ sub.calDays }} 提醒您</view>
+      </view>
       <a class="weui-btn weui-btn_primary" bindtap="onConfirm">完成</a>
-      <a class="weui-btn weui-btn_default" bindtap="show">更多</a>
+      <a class="weui-btn weui-btn_default" data-view="menu" bindtap="showView">更多</a>
     </view>
   </view>
 </van-transition>
 
+<view class="fadeIn" wx:if="{{ view.sub }}">
+  <view class="weui-mask" data-view="sub" bindtap="showView"></view>
+  <view class="weui-dialog">
+    <view class="weui-dialog__hd"><strong class="weui-dialog__title">设置提醒时间</strong></view>
+    <view class="weui-dialog__bd">
+      <view class="time">
+        <text data-view="cal" bind:tap="showView">{{ sub.date }}</text>
+        <picker
+          mode="time"
+          value="{{ sub.time }}"
+          start="00:00"
+          end="23:59"
+          bindchange="setSubTime"
+        >
+          <text>{{ sub.time }}</text>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-dialog__ft">
+      <view class="weui-dialog__btn weui-dialog__btn_default" data-view="sub" bindtap="showView"
+        >取消</view
+      >
+      <view class="weui-dialog__btn weui-dialog__btn_primary" bind:tap="confirmSub">
+        确定
+      </view>
+    </view>
+  </view>
+</view>
+
 <van-action-sheet
-  show="{{ show }}"
-  actions="{{ actions }}"
-  bind:close="show"
-  bind:cancel="show"
+  show="{{ view.menu }}"
+  data-view="menu"
+  actions="{{ menu }}"
+  bind:close="showView"
+  bind:cancel="showView"
   bind:select="onSelect"
   cancel-text="取消"
 ></van-action-sheet>
+
+<van-calendar
+  show="{{ view.cal }}"
+  data-view="cal"
+  color="#07c160"
+  show-confirm="{{ false }}"
+  bind:confirm="setSubDate"
+  bind:close="showView"
+></van-calendar>
