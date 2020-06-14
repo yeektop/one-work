@@ -25,6 +25,17 @@
   </view>
 </van-transition>
 
+<van-action-sheet
+  show="{{ view.menu }}"
+  data-view="menu"
+  actions="{{ menu }}"
+  overlay="{{ false }}"
+  bind:close="showView"
+  bind:cancel="showView"
+  bind:select="onSelect"
+  cancel-text="取消"
+></van-action-sheet>
+
 <view class="fadeIn" wx:if="{{ view.sub }}">
   <view class="weui-mask" data-view="sub" bindtap="showView"></view>
   <view class="weui-dialog">
@@ -53,16 +64,6 @@
     </view>
   </view>
 </view>
-
-<van-action-sheet
-  show="{{ view.menu }}"
-  data-view="menu"
-  actions="{{ menu }}"
-  bind:close="showView"
-  bind:cancel="showView"
-  bind:select="onSelect"
-  cancel-text="取消"
-></van-action-sheet>
 
 <van-calendar
   show="{{ view.cal }}"
