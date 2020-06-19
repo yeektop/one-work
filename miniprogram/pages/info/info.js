@@ -1,5 +1,6 @@
 const db = wx.cloud.database()
 const works = db.collection('works')
+const subscribes = db.collection('subscribes')
 
 import { getTimestamp, formatDay, formatTime, calDays } from "../../utils/myMoment";
 
@@ -108,8 +109,8 @@ Page({
    * 提交订阅
    */
   async confirmSub() {
-    const { work: { title, content, end }, sub: { date, time } } = this.data
-    const tempid = 'nLLL7b1sTw4JPR1Znjp281dmd-D6e4l1s-06zXFmRmM'
+    const { work: { _id, title, content, course, end }, sub: { date, time } } = this.data
+    const tempid = 'EEZQ-kY_zzs4gSbuz9PD60SQwCnYsCVMzvc-mgEl40I'
     const res = await wx.requestSubscribeMessage({
       tmplIds: [tempid],
     })
@@ -123,14 +124,15 @@ Page({
       })
     } else {
       this.showView('', 'sub')
-      console.log(date + ' ' + time);
       this.setData({
         'sub.calDays': calDays(date + ' ' + time)
       })
 
       // 提交订阅消息
       const subInfo = {
-        tmplIds,
+        tempid,
+        course,
+        workId: _id,
         timestamp: getTimestamp(date + ' ' + time),
         sended: false,
         title,
@@ -138,8 +140,8 @@ Page({
         end,
       }
 
-      // TODO: 完成 获得订阅权限，添加订阅消息到数据库
-      console.log(subInfo);
+      // 添加订阅消息到数据库
+      await subscribes.add({ data: subInfo })
     }
   },
 
@@ -182,7 +184,13 @@ Page({
   async onLoad(options) {
     const work = (await works.doc(options.id).get()).data
     work.date = formatDay(work.end)
-    this.setData({ work, loading: false })
+    const subInfo = (await subscribes.where({
+      _openid: '{openid}',
+      title: work.title,
+      sended: false,
+    }).get()).data[0]
+    const data = subInfo ? calDays(subInfo.timestamp) : ''
+    this.setData({ work, loading: false, 'sub.calDays': data })
   },
 
 
