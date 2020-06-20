@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "wx-server-sdk": "~2.1.2",
-    "moment": "^2.26.0"
+    "dayjs": "^1.8.28",
+    "wx-server-sdk": "~2.1.2"
   }
 }
