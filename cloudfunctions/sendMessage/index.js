@@ -21,8 +21,6 @@ exports.main = async (event, context) => {
     sended: false,
   }).get()
 
-  console.log(data);
-
   // 没有就直接返回 0 
   if (!data.length) {
     return 0
@@ -70,6 +68,7 @@ exports.main = async (event, context) => {
             sended: true
           },
         })
+      // 记录
       sendResult.success.push(item._id)
     } catch (err) {
       // 异常捕捉，记录
@@ -88,7 +87,8 @@ exports.main = async (event, context) => {
         }).catch(e => {
           console.log(e);
         })
-      // 记录到云函数日志中
+
+      // 记录
       sendResult.error.push({
         _id: item._id,
         errCode,
@@ -98,9 +98,11 @@ exports.main = async (event, context) => {
 
   }
 
+  // 统计结果
   sendResult.successCount = sendResult.success.length
   sendResult.errorCount = sendResult.error.length
 
+  // 记录到云函数日志中
   if (sendResult.error.length > 0) {
     console.log("sendResult", sendResult);
     throw "发送失败"
