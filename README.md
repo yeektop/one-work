@@ -10,6 +10,12 @@
 
 
 
+## 项目状态
+
+当前属于 **alpha** 阶段，尚不可用实际应用
+
+
+
 ## 项目介绍
 
 > 基于 **原生微信小程序** + **Vant Weapp** 开发，后端使用**微信云开发**
@@ -31,15 +37,11 @@
 
 ![](/QRCode.png)
 
-## 分支命名
 
-随便命名，注意提交规范即可，不过推荐参照提交规范，如
 
-fate/add home page:  添加home页面
 
-fix/msg page navigate:  修复 msg 的导航问题
 
-## 提交规范
+## PR规范
 
 建议使用 [Commitizen](https://github.com/commitizen/cz-cli) 来规范提交，[安装教程](https://segmentfault.com/a/1190000020924364)
 
@@ -53,18 +55,12 @@ fix/msg page navigate:  修复 msg 的导航问题
 
 
 
-## 发布流程
+## 更新日志
 
-由于使用了 **[conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli)**，发布流程如下：
+[CHANGELOG.md](https://github.com/moreant/one-work/blob/master/CHANGELOG.md)
 
-1. 完成功能/bug后，使用变基精简提交
-2. 拉取 github 中的 dev 分支
-3. 使用变基合并到本地 dev 分支，处理冲突，确保工作区干净
-4. 执行 `npm version major|minor|patch` （对应版本号中的 major.minor.patch）增加版本号
-5. 产生changelog `conventional-changelog -p angular -i CHANGELOG.md -s ` 修改样式，提交CHANGELOG.md
-6. 合并到 master 分支，打上 Tags
-7. 推送云端
 
-## LICENSE
+
+## 开源协议
 
 [MIT](LICENSE)
