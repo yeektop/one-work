@@ -3,13 +3,14 @@
     "pages/index/index",
     "pages/info/info",
     "pages/my/my",
+    "pages/my/about/about",
+    "pages/my/setting/setting",
     "pages/workForm/workForm",
     "pages/class/class",
     "pages/class/join",
     "pages/class/quit",
     "pages/class/create",
-    "pages/msg/msg",
-    "pages/admin/admin"
+    "pages/msg/msg"
   ],
   "tabBar": {
     "borderStyle": "white",
