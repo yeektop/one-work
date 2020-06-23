@@ -1,0 +1,13 @@
+<view class="style-size">
+	<h4 class="weui-media-box__title">{{work.title}}</h4>
+	<view class="weui-media-box__desc">{{work.content}}</view>
+</view>
+<van-cell-group>
+	<view class="weui-cells__title">上交列表</view>
+	<view class="weui-cell" wx:for="{{work.finish}}" wx:key="index">
+    <view class="weui-cell__bd">{{item.nickName}}</view>
+    <view class="weui-cell__ft">{{item.date}}</view>
+	</view>
+</van-cell-group>
+
+<a class="weui-btn weui-btn_primary bottom" bindtap="downloadFile">打包下载</a>

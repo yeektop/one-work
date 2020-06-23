@@ -23,7 +23,9 @@ Page({
     },
     end: '',
     classIndex: -1,
-    look: true
+    look: true,
+    upload: false,
+    finish:[]
   },
 
   /**
@@ -75,6 +77,11 @@ Page({
       look: !this.data.look
     })
   },
+  changeUploadSwitch(){
+    this.setData({
+      upload: !this.data.upload
+    })
+  },
 
 
   /**
@@ -89,7 +96,9 @@ Page({
         end = '',
         content = '',
         belongClasses,
-        look
+        look,
+        upload,
+        finish
       } = this.data
       if (title.length < 3) {
         throw "标题太短了"
@@ -115,7 +124,9 @@ Page({
         end,
         content,
         createTime: createTime ? createTime : (+new Date()),
-        belongClasses: belongClasses || {}
+        belongClasses: belongClasses || {},
+        upload,
+        finish
       }
       if (_id) {
         this.update(form, look, _id)

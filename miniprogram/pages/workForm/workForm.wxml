@@ -104,6 +104,14 @@
                 </van-cell-group>
               </van-radio-group>
             </view>
+            <!-- 文件上传开关 -->
+					<view class="uploadfile">
+						<van-cell-group>
+							<van-cell title="是否需要交作业">
+								<van-switch checked="{{ upload }}" active-color="#07c160" inactive-color="#ee0a24" bind:change="changeUploadSwitch"/>
+							</van-cell>
+						</van-cell-group>
+					</view>
           </view>
         </view>
       </view>

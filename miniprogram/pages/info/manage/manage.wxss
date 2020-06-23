@@ -1,0 +1,18 @@
+/* miniprogram/pages/info/manage/manage.wxss */
+.style-size{
+  padding-left: 1em;
+  height: 6vh;
+  padding-bottom: 2em;
+}
+.weui-media-box__title{
+  font-size: 1.5em;
+}
+.weui-media-box__desc{
+  font-size: 1em;
+}
+.bottom{
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+}

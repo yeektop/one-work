@@ -112,6 +112,12 @@
 					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/info/manage/manage",
+					"pathName": "pages/info/manage/manage",
+					"scene": null
 				}
 			]
 		}

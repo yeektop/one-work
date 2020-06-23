@@ -9,7 +9,8 @@
     "pages/class/quit",
     "pages/class/create",
     "pages/msg/msg",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/info/manage/manage"
   ],
   "tabBar": {
     "borderStyle": "white",

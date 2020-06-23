@@ -23,7 +23,7 @@ Page({
    */
   onLoad: async function (options) {
     const userInfo = wx.getStorageSync('userInfo')
-    this.setData({ userInfo })
+    this.setData({ userInfo })   
   },
 
   /**
