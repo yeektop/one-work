@@ -1,15 +1,13 @@
 <view class="page">
   <!-- 头部 -->
-  <view class="page__bd">
-    <view class="weui-article">
-      <view class="weui-article__h1">一作业</view>
-      <view class="weui-article__p">1.0</view>
-    </view>
+  <view class="weui-article">
+    <view class="weui-article__h1">一作业</view>
+    <view class="weui-article__p">1.0</view>
   </view>
 
   <!-- 主体 -->
   <van-cell-group>
-    <van-cell title="访问 PC Web版"is-link custom-class="cell"></van-cell>
+    <van-cell title="访问 PC Web版" is-link custom-class="cell"></van-cell>
     <van-cell title="在 GitHub" is-link custom-class="cell"></van-cell>
     <van-cell title="联系我们" is-link custom-class="cell"></van-cell>
   </van-cell-group>

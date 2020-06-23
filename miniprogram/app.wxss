@@ -49,6 +49,11 @@ page {
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif
 }
 
+.page__bd {
+  height: 100%;
+  background-color: var(--weui-BG-0);
+}
+
 .warn {
   color: var(--weui-RED)
 }
