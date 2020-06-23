@@ -189,8 +189,10 @@ Page({
   // 作业上传
   onConfirm() {
     switch (this.data.confirm) {
-      case '完成作业':
-        console.log('完成');
+      case '未完成':
+        this.setData({
+          confirm:"已完成"
+        })
         break
       case '作业上传':
         console.log(this.data.work);
@@ -354,7 +356,7 @@ Page({
     // 判断是否需要上交作业
     if (!this.data.work.upload) {
       this.setData({
-        confirm: "完成作业"
+        confirm: "未完成"
       })
     }
 
