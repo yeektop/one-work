@@ -20,23 +20,23 @@ Page({
       time: false
     },
     menu: [{
-        name: '修改',
-        color: '#07c160'
-      },
-      {
-        name: '删除',
-        color: '#fa5151'
-      },
-      {
-        name: '告诉同学',
-        openType: 'share'
-      },
-      {
-        name: '设置提醒'
-      },
-      {
-        name: "文件管理"
-      }
+      name: '修改',
+      color: '#07c160'
+    },
+    {
+      name: '删除',
+      color: '#fa5151'
+    },
+    {
+      name: '告诉同学',
+      openType: 'share'
+    },
+    {
+      name: '设置提醒'
+    },
+    {
+      name: "文件管理"
+    }
     ],
     sub: {
       date: formatDay(+new Date()),
@@ -83,15 +83,15 @@ Page({
       case menus[0]:
         this.update()
         break;
-        // 删除
+      // 删除
       case menus[1]:
         this.delect()
         break;
-        // 分享
+      // 分享
       case menus[2]:
         console.log("分享")
         break;
-        // 订阅
+      // 订阅
       case menus[3]:
         if (this.data.sub.calDays) {
           this.setData({
@@ -103,6 +103,7 @@ Page({
         }
         this.showView('', 'sub')
         break;
+      // 文件管理
       case menus[4]:
         this.jumoToManage()
         break
@@ -191,7 +192,7 @@ Page({
     switch (this.data.confirm) {
       case '未完成':
         this.setData({
-          confirm:"已完成"
+          confirm: "已完成"
         })
         break
       case '作业上传':
@@ -252,7 +253,7 @@ Page({
                 })
                 // 更新上传数据
                 that.updateFinish()
-                
+
                 console.log(that.data.work);
 
                 // 提示成功
@@ -292,6 +293,9 @@ Page({
     })
   },
 
+  /**
+   * 跳转到更新页面
+   */
   update(id) {
     wx.navigateTo({
       url: '/pages/workForm/workForm?id=' + this.data.work._id,
@@ -315,19 +319,13 @@ Page({
 
   // 更新上交情况
   async updateFinish() {
-    let {
-      work
-    } = this.data
-    let {
-      updated
-    } = (await works.doc(work._id)
+    let { work } = this.data
+    let updated = (await works.doc(work._id)
       .update({
         data: {
           finish: work.finish
         }
-      }))
-    .stats
-
+      })).stats.updated
     if (updated !== 1) {
       throw "更新失败"
     } else {
@@ -369,5 +367,5 @@ Page({
     console.log();
 
   },
-  onShareAppMessage() {}
+  onShareAppMessage() { }
 })
