@@ -5,9 +5,9 @@ import { getDBUserInfo } from "../../../utils/user";
 Page({
 
   data: {
-    studentID = '',
-    studentName = '',
-    email = ''
+    studentID: '',
+    studentName: '',
+    email: ''
   },
 
   /**

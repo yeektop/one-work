@@ -10,7 +10,7 @@ cloud.init({
 // 云函数入口函数
 exports.main = async (event, context) => {
   const zip = new jszip()
-  const {finish} = event
+  const { finish, fileName } = event
 
   for (let i = 0; i < finish.length; i++) {
     const res = await cloud.downloadFile({
@@ -21,13 +21,13 @@ exports.main = async (event, context) => {
 
   await new Promise(resolve => {
     zip.generateNodeStream({ streamFiles: true })
-      .pipe(fs.createWriteStream('/tmp/out.zip'))
+      .pipe(fs.createWriteStream(`/tmp/${fileName}.zip`))
       .on('finish', function () {
         resolve()
       });
   })
 
-  const fileStream = fs.createReadStream('/tmp/out.zip')
+  const fileStream = fs.createReadStream(`/tmp/${fileName}.zip`)
   return await cloud.uploadFile({
     cloudPath: `out.zip`,
     fileContent: fileStream,

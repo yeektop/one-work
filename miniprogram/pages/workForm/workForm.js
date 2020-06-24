@@ -25,7 +25,7 @@ Page({
     classIndex: -1,
     look: true,
     upload: false,
-    finish:[]
+    finish: []
   },
 
   /**
@@ -77,7 +77,7 @@ Page({
       look: !this.data.look
     })
   },
-  changeUploadSwitch(){
+  changeUploadSwitch() {
     this.setData({
       upload: !this.data.upload
     })
@@ -162,14 +162,17 @@ Page({
   /**
    * 更新work操作
    */
-  async update(form, id) {
+  async update(form, look, id) {
     const { updated } = (await works.doc(id)
-      .update({ data: form }))
-      .stats
+      .update({ data: form })).stats
     if (updated !== 1) {
       throw "更新失败"
     } else {
-      return
+      if (look) {
+        wx.reLaunch({
+          url: '/pages/info/info?id=' + id,
+        })
+      }
     }
 
   },
@@ -196,14 +199,14 @@ Page({
   async onLoad(options) {
     const userInfo = wx.getStorageSync('userInfo')
     let work = {}, head = "发布作业", date = ''
-    
+
     // 更新work会携带id
     if (options.id) {
       head = "发布作业"
       work = (await works.doc(options.id).get()).data
       date = formatDay(work.end)
     }
-    
+
     this.setData({
       ...work, date, userInfo, loading: false, head
     })

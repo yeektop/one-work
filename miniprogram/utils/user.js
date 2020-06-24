@@ -62,7 +62,6 @@ export function getDBUserInfo() {
 export function firstSignIn() {
   return new Promise(async (resolve, reject) => {
     try {
-      const _openid = await getOpenId()
       const createTime = +new Date()
       const fullInfo = false
       let role = 'student'

@@ -19,14 +19,15 @@ Page({
    */
   async downloadFile() {
     // 使用云函数压缩云存储的文件
-    const { finish } = this.data.work
+    const { finish, title } = this.data.work
     const fileID = (await wx.cloud.callFunction({
       name: 'downloadZip',
       data: {
-        finish
+        finish,
+        fileName: title
       }
     })).result.fileID
-    
+
     // 获取临时路径     
     const tempFileURL = (await wx.cloud.getTempFileURL({
       fileList: [fileID],
@@ -39,6 +40,25 @@ Page({
         console.log(res);
       }
     })
+
+    const userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.email) {
+      const { title } = this.data.work
+      wx.cloud.callFunction({
+        name: 'sendEmail',
+        data: {
+          to: userInfo.email,
+          subject: title + ' 作业文件打包下载链接',
+          html: `<p><b>你好：</b></p><p>这是${title}作业上传文件打包后的下载链接` +
+            `<a href='${tempFileURL}'>点击下载</a></p><p>如果您没有看到链接，请打开此链接：${tempFileURL}</p>`
+        }
+      }).then(res => {
+        wx.showToast({
+          title: '已发送到邮箱',
+        })
+      })
+
+    }
   },
 
   /**

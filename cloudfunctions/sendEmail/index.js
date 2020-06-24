@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
   });
 
   let message = {
-    from: 'system@yeek.top',   //你的发件邮箱
+    from: '"一作业小程序" system@yeek.top',   //你的发件邮箱
     to, //你要发给谁
     // cc:'',  支持cc 抄送
     // bcc: '', 支持bcc 密送
