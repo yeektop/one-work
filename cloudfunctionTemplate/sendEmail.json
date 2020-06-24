@@ -1,0 +1,10 @@
+[
+  {
+    "name": "邮件测试",
+    "value": {
+      "to": "moreant@foxmail.com",
+      "subject": "再试试",
+      "html": "<p>这是一个测试邮件<p/>"
+    }
+  }
+]
