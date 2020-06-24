@@ -1,19 +1,4 @@
-.info {
-  margin: 100rpx;
-}
-
-.user {
-  text-align: center;
-}
-
-.nickname {
-  margin-left: 16rpx;
-  font-size: 34rpx;
-  align-self: center;
-}
-
-.avatar {
-  width: 200rpx;
-  height: 200rpx;
-  border-radius: 50%;
+.page__bd {
+  height: 100%;
+  background-color: var(--weui-BG-0);
 }

@@ -13,7 +13,11 @@ const userInfos = db.collection('userInfos')
  * @property {string} avatarUrl - 头像地址
  * @property {classInfo[]} classes - 班级
  * @property {string} nickNmae - 昵称
- * @property {string} role - 权限
+ * @property {string} role - (角色)权限
+ * @property {string} fullInfo - 学生信息完整
+ * @property {string} studentID - 学号
+ * @property {string} studentName - 姓名
+ * @property {string} email - 邮箱
  */
 
 /**
@@ -48,6 +52,50 @@ export function getDBUserInfo() {
     }).get()
       .then(res => resolve(res.data[0]))
       .catch(error => reject(error))
+  })
+}
+
+/**
+ * 打开小程序即执行首次注册
+ * @returns {Promise<string>} - _openid
+ */
+export function firstSignIn() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const _openid = await getOpenId()
+      const createTime = +new Date()
+      const fullInfo = false
+      let role = 'student'
+      const whitelist = [
+        // Moreant
+        'o0e774u-c4KHBu5mrOBooB2gx40U',
+        // catalpa
+        'o0e774ueWTGgDp0dt0cPij4sfHyc',
+        // merrycodes
+        'o0e774qXJq2voCXNuKPeZSay16uU'
+      ]
+      if (whitelist.some(item => item === _openid)) {
+        role = 'admin'
+      }
+      const baseInfo = {
+        createTime,
+        role,
+        fullInfo
+      }
+      const _id = (await userInfos.add({
+        data: {
+          ...baseInfo
+        }
+      }))._id
+      wx.setStorageSync('userInfo', {
+        _id,
+        _openid,
+        ...baseInfo
+      })
+      resolve(_openid)
+    } catch (err) {
+      reject(err)
+    }
   })
 }
 

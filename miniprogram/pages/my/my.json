@@ -1,8 +1,4 @@
 {
   "navigationBarTitleText": "我的",
-  "usingComponents": {   
-    "van-circle": "@vant/weapp/circle",
-    "van-grid": "@vant/weapp/grid",
-    "van-grid-item": "@vant/weapp/grid-item"
-  }
+  "usingComponents": {}
 }

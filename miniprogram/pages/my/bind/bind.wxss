@@ -1,0 +1,5 @@
+/* pages/my/reg/reg.wxss */
+
+.a{
+  box-sizing: border-box;
+}

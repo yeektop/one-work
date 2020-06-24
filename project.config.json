@@ -65,51 +65,16 @@
 					"scene": null
 				},
 				{
+					"id": 1,
+					"name": "pages/my/bind/bind",
+					"pathName": "pages/my/bind/bind",
+					"query": "bind=true",
+					"scene": null
+				},
+				{
 					"id": -1,
 					"name": "pages/my/my",
 					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/add/add",
-					"pathName": "pages/add/add",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "pages/class/join",
-					"pathName": "pages/class/join",
-					"query": "classId=6af880a55eb2bc8f002edd4409bd0c1b",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/class/class",
-					"pathName": "pages/class/class",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "pages/msg/msg",
-					"pathName": "pages/msg/msg",
-					"query": "type=info&msg=您的操作完成了&tips=点击确定返回上一页&url=/pages/class/class",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "pages/class/confirm_join",
-					"pathName": "pages/class/confirm_join",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
 				},
