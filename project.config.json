@@ -65,10 +65,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/my/reg/reg",
-					"pathName": "pages/my/reg/reg",
-					"query": "",
+					"id": 1,
+					"name": "pages/my/bind/bind",
+					"pathName": "pages/my/bind/bind",
+					"query": "bind=true",
 					"scene": null
 				},
 				{

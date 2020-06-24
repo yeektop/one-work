@@ -1,6 +1,6 @@
 <view class="page__bd">
   <navigator
-    url="{{ userInfo.studentID ? 'setting/setting' : 'reg/reg' }}"
+    url="bind/bind"
     class="weui-cells"
     style="margin-top: 0"
   >
